@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <padding
+        android:bottom="@dimen/underline_padding"
+        android:left="@dimen/underline_side_padding"
+        android:right="@dimen/underline_side_padding" />
+    <stroke
+        android:width="@dimen/underline_width"
+        android:color="@color/blue" />
+
+</shape>
