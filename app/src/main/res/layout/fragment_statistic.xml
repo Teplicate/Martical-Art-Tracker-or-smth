@@ -13,9 +13,7 @@
             android:id="@+id/screenDivider"
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="250dp"
             android:layout_marginTop="64dp"
-            android:layout_marginEnd="150dp"
             android:layout_marginBottom="32dp"
             android:background="#918A8A"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,366 +23,276 @@
 
         <TextView
             android:id="@+id/blueCornerName"
+            style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/underline_blue"
+            android:text="@string/blueTitle"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintStart_toEndOf="@+id/divider3"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Blue Fighter" />
 
         <TextView
             android:id="@+id/redCornerName"
+            style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/underline_red"
+            android:text="@string/redTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/screenDivider"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Red Fighter" />
 
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="150dp"
-            android:layout_marginBottom="32dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <LinearLayout
+            android:id="@+id/blueTilesContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/sigStrike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/divider3"
-            tools:text="Sig. Strike" />
+            app:layout_constraintTop_toBottomOf="@+id/blueCornerName">
 
-        <TextView
-            android:id="@+id/strike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="@+id/sigStrike"
-            app:layout_constraintTop_toBottomOf="@+id/sigStrike"
-            tools:text="Strike" />
+            <Button
+                android:id="@+id/blueSignigicantStrike"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/sig_strike_button_text"
+                tools:text="Sig. Strike" />
 
-        <TextView
-            android:id="@+id/takedown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Takedown"
-            app:layout_constraintStart_toStartOf="@+id/strike"
-            app:layout_constraintTop_toBottomOf="@+id/strike" />
+            <Button
+                android:id="@+id/blueStrike"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:fontFamily="sans-serif"
+                android:text="@string/strike_button_text"
+                tools:text="Strike" />
 
-        <TextView
-            android:id="@+id/submission"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="@+id/takedown"
-            app:layout_constraintTop_toBottomOf="@+id/takedown"
-            tools:text="Submission" />
+            <Button
+                android:id="@+id/blueTakedownAttempt"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/takedown_att_button_text"
+                tools:text="Takedown \n Att." />
 
+            <Button
+                android:id="@+id/blueTakedown"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/takedown_button_text"
+                tools:text="Takedown" />
+
+            <Button
+                android:id="@+id/blueSubmissionAttempt"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/submission_att_button_text"
+                tools:text="Submission \n Att." />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/bluePointsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintStart_toEndOf="@+id/divider3"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
+            app:layout_constraintStart_toEndOf="@+id/blueTilesContainer"
+            app:layout_constraintTop_toTopOf="@+id/blueTilesContainer">
 
             <TextView
                 android:id="@+id/blueSigStrikePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
 
             <TextView
                 android:id="@+id/blueStrikePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/blueTakedownAttPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
 
             <TextView
                 android:id="@+id/blueTakedownPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
 
             <TextView
                 android:id="@+id/blueSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/screenDivider"
+            app:layout_constraintTop_toBottomOf="@+id/redCornerName">
+
+            <Button
+                style="@style/ButtonTextStyle"
+                android:id="@+id/redSignigicantStrike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/sig_strike_button_text"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                tools:text="Sig. Strike" />
+
+            <Button
+                android:id="@+id/redStrike"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/strike_button_text"
+                android:textSize="15sp"
+                tools:text="Strike" />
+
+            <Button
+                android:id="@+id/redTakedownAttempt"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/takedown_att_button_text"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                tools:text="Takedown \n Att." />
+
+            <Button
+                android:id="@+id/redTakedown"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/takedown_button_text"
+                tools:text="Takedown" />
+
+            <Button
+                android:id="@+id/redSubmissionAttempt"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/submission_att_button_text"
+                tools:text="Submission \n Att." />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/redPointsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/screenDivider"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
             <TextView
                 android:id="@+id/redSigStrikePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
 
             <TextView
                 android:id="@+id/redStrikePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/redTakedownAttPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
 
             <TextView
                 android:id="@+id/redTakedownPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
 
             <TextView
                 android:id="@+id/redSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                tools:text="5" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/blueButtonsDecreaseContainer"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/bluePointsContainer"
-            app:layout_constraintStart_toEndOf="@+id/divider3"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
-
-            <Button
-                android:id="@+id/blueSigStrikeButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/blueSubmissionButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/blueTakedownButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/blueStrikeButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/blue_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/redButtonsDecreaseContainer"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/redPointsContainer"
-            app:layout_constraintStart_toEndOf="@+id/screenDivider"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
-
-            <Button
-                android:id="@+id/redSigStrikeButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/redSubmissionButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/redTakedownButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-            <Button
-                android:id="@+id/redStrikeButtonDec"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/red_button_background"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                tools:android="-" />
-
-        </LinearLayout>
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
 
 
-        <LinearLayout
-            android:id="@+id/blueButtonsIncreaseContainer"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintStart_toEndOf="@+id/bluePointsContainer"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
-
-            <Button
-                android:id="@+id/blueSigStrikeButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/blueSubmissionButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/blueTakedownButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/blue_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/blueStrikeButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/blue_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/redButtonsIncreaseContainer"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/redPointsContainer"
-            app:layout_constraintTop_toTopOf="@+id/divider3">
-
-            <Button
-                android:id="@+id/redSigStrikeButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/redSubmissionButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/redTakedownButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/red_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
-
-            <Button
-                android:id="@+id/redStrikeButtonInc"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/red_button_background"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                tools:android="+" />
         </LinearLayout>
 
 
