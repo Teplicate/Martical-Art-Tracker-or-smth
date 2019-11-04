@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ru.teplicate.martialarttracker.view_models.StatisticViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/blueCornerName">
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueSignigicantStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -71,7 +78,7 @@
                 android:text="@string/sig_strike_button_text"
                 tools:text="Sig. Strike" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -82,7 +89,7 @@
                 android:text="@string/strike_button_text"
                 tools:text="Strike" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueTakedownAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -92,7 +99,7 @@
                 android:text="@string/takedown_att_button_text"
                 tools:text="Takedown \n Att." />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueTakedown"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -102,7 +109,7 @@
                 android:text="@string/takedown_button_text"
                 tools:text="Takedown" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueSubmissionAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -129,6 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -139,6 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -148,6 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -157,6 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -165,6 +176,7 @@
                 android:id="@+id/blueSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -173,7 +185,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/redTilesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -182,9 +194,9 @@
             app:layout_constraintStart_toEndOf="@+id/screenDivider"
             app:layout_constraintTop_toBottomOf="@+id/redCornerName">
 
-            <Button
-                style="@style/ButtonTextStyle"
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redSignigicantStrike"
+                style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/button_margin"
@@ -194,7 +206,7 @@
                 android:textSize="15sp"
                 tools:text="Sig. Strike" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -205,17 +217,17 @@
                 android:textSize="15sp"
                 tools:text="Strike" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redTakedownAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/takedown_att_button_text"
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/red_button_background"
+                android:text="@string/takedown_att_button_text"
                 tools:text="Takedown \n Att." />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redTakedown"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -225,7 +237,7 @@
                 android:text="@string/takedown_button_text"
                 tools:text="Takedown" />
 
-            <Button
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redSubmissionAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -244,14 +256,15 @@
             android:layout_marginTop="24dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout">
+            app:layout_constraintStart_toEndOf="@+id/redTilesContainer"
+            app:layout_constraintTop_toTopOf="@+id/redTilesContainer">
 
             <TextView
                 android:id="@+id/redSigStrikePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -262,6 +275,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -271,6 +285,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -280,6 +295,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
@@ -288,6 +304,7 @@
                 android:id="@+id/redSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
                 tools:text="7" />
