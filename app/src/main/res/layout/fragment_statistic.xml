@@ -19,54 +19,26 @@
         <View
             android:id="@+id/screenDivider"
             android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="64dp"
-            android:layout_marginBottom="32dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="#918A8A"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/blueCornerName"
-            style="@style/TitleTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/underline_blue"
-            android:text="@string/blueTitle"
-            app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Blue Fighter" />
-
-        <TextView
-            android:id="@+id/redCornerName"
-            style="@style/TitleTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/underline_red"
-            android:text="@string/redTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/screenDivider"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Red Fighter" />
 
         <LinearLayout
             android:id="@+id/blueTilesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/blueCornerName">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/blueSignigicantStrike"
@@ -76,6 +48,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/blue_button_background"
                 android:text="@string/sig_strike_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Sig. Strike" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -87,6 +60,7 @@
                 android:background="@drawable/blue_button_background"
                 android:fontFamily="sans-serif"
                 android:text="@string/strike_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Strike" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -97,6 +71,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/blue_button_background"
                 android:text="@string/takedown_att_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown \n Att." />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -107,6 +82,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/blue_button_background"
                 android:text="@string/takedown_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -117,7 +93,41 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/blue_button_background"
                 android:text="@string/submission_att_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Submission \n Att." />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/blueKnockdowns"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/knockdowns"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Knock -\ndowns" />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/bluePasses"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/passes"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Passes" />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/blueReversals"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/blue_button_background"
+                android:text="@string/reversals"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Reversals" />
 
         </LinearLayout>
 
@@ -125,7 +135,7 @@
             android:id="@+id/bluePointsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
             app:layout_constraintStart_toEndOf="@+id/blueTilesContainer"
@@ -176,6 +186,37 @@
                 android:id="@+id/blueSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/blueKnockdownsPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/bluePassesPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/blueReversalsPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
                 android:text="0"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/point_text_size"
@@ -188,11 +229,13 @@
             android:id="@+id/redTilesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/screenDivider"
-            app:layout_constraintTop_toBottomOf="@+id/redCornerName">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
                 android:id="@+id/redSignigicantStrike"
@@ -203,7 +246,7 @@
                 android:background="@drawable/red_button_background"
                 android:text="@string/sig_strike_button_text"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Sig. Strike" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -214,7 +257,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/red_button_background"
                 android:text="@string/strike_button_text"
-                android:textSize="15sp"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Strike" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -225,6 +268,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/red_button_background"
                 android:text="@string/takedown_att_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown \n Att." />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -235,6 +279,7 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/red_button_background"
                 android:text="@string/takedown_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown" />
 
             <ru.teplicate.martialarttracker.custom_view.SwipeableButton
@@ -245,7 +290,41 @@
                 android:layout_marginBottom="@dimen/button_margin"
                 android:background="@drawable/red_button_background"
                 android:text="@string/submission_att_button_text"
+                android:textSize="@dimen/tile_text_size"
                 tools:text="Submission \n Att." />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/redKnockdowns"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/knockdowns"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Knock -\ndowns" />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/redPasses"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/passes"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Passes" />
+
+            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+                android:id="@+id/redReversals"
+                style="@style/ButtonTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:background="@drawable/red_button_background"
+                android:text="@string/reversals"
+                android:textSize="@dimen/tile_text_size"
+                tools:text="Reversals" />
 
         </LinearLayout>
 
@@ -253,7 +332,7 @@
             android:id="@+id/redPointsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/redTilesContainer"
@@ -304,6 +383,37 @@
                 android:id="@+id/redSubmissionPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/redKnockdownsPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/redPassesPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
+                android:text="0"
+                android:textColor="@color/red"
+                android:textSize="@dimen/point_text_size"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/redReversalsPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/points_bottom_margin"
                 android:text="0"
                 android:textColor="@color/red"
                 android:textSize="@dimen/point_text_size"
@@ -311,6 +421,16 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/redTilesContainer"
+            app:layout_constraintStart_toEndOf="@+id/blueTilesContainer" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,12 +2,14 @@
     <string name="app_name">Martial Tracker</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="blueTitle">BLUE</string>
-    <string name="redTitle">RED</string>
+    <!--    <string name="blueTitle">BLUE</string>-->
+    <!--    <string name="redTitle">RED</string>-->
     <string name="sig_strike_button_text">Sig. Strike</string>
     <string name="strike_button_text">Strike</string>
-    <string name="takedown_att_button_text">Takedown \n Att.</string>
-    <string name="takedown_button_text">Takedown</string>
-    <string name="submission_att_button_text">Submission \n Att.</string>
+    <string name="takedown_att_button_text">Takedown \n attempt</string>
+    <string name="takedown_button_text">Takedown \n success</string>
+    <string name="submission_att_button_text">Submission \n attempt</string>
+    <string name="knockdowns">Knock -\ndowns</string>
+    <string name="passes">Passes</string>
+    <string name="reversals">Reversals</string>
 </resources>
