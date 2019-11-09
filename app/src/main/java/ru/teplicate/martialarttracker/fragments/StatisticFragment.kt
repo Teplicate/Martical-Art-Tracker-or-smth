@@ -6,16 +6,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import ru.teplicate.martialarttracker.R
 import ru.teplicate.martialarttracker.custom_view.OnSwipeListener
 import ru.teplicate.martialarttracker.custom_view.SwipeableButton
 import ru.teplicate.martialarttracker.databinding.FragmentStatisticBinding
+import ru.teplicate.martialarttracker.util.CompetitorColor
+import ru.teplicate.martialarttracker.util.TransferContainer
 import ru.teplicate.martialarttracker.view_models.StatisticViewModel
 import ru.teplicate.martialarttracker.view_models.StatisticViewModelFactory
 
@@ -74,6 +78,8 @@ class StatisticFragment : Fragment() {
             this,
             getScoreViewObserver(viewModel, scoreViewIdToSelf)
         )
+
+        binding.roundEndButton.setOnClickListener(onRoundEndButtonClickListener(viewModel))
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -100,5 +106,41 @@ class StatisticFragment : Fragment() {
                 viewModel.scoreIdToScoreMap.getValue(i).toString()
             scoreViewIdToSelf.getValue(i).invalidate()
         }
+    }
+
+    private fun onRoundEndButtonClickListener(viewModel: StatisticViewModel): View.OnClickListener {
+        Log.i(className, "Button clicked preparing to move")
+        return View.OnClickListener {
+            findNavController().navigate(
+                StatisticFragmentDirections.actionStatisticFragmentToRoundRatingFragment(
+                    getFightersScores(viewModel)
+                )
+            )
+        }
+    }
+
+    private fun getFightersScores(viewModel: StatisticViewModel): TransferContainer {
+        Log.i(className, "Making map")
+        var sButton: SwipeableButton
+        val redParameterScore = HashMap<String, Int>()
+        val blueParameterScore = HashMap<String, Int>()
+
+        viewModel.getButtonIdToScoreValMap()
+            .forEach { (buttonId, score) ->
+                sButton = requireNotNull(activity).findViewById(buttonId)
+
+                if ((sButton.parent as LinearLayout).tag.toString() == CompetitorColor.RED.title) {
+                    redParameterScore[sButton.text.toString()] = score
+                }
+                if ((sButton.parent as LinearLayout).tag.toString() == CompetitorColor.BLUE.title) {
+                    blueParameterScore[sButton.text.toString()] = score
+                }
+            }
+
+        Log.i(className, "Made map")
+        return TransferContainer(
+            redParameterScore = redParameterScore,
+            blueParameterScoe = blueParameterScore
+        )
     }
 }

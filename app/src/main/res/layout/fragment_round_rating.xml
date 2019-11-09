@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.RoundRatingFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
         android:id="@+id/constrainrContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tableName"
@@ -17,214 +16,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/underline_basic"
-            android:text="ROUND STATS"
+            android:text="@string/round_stats"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
+        <HorizontalScrollView
             android:id="@+id/scrollContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableName">
+            android:isScrollContainer="true">
 
-            <LinearLayout
+            <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:divider="@color/blue"
+                android:dividerPadding="15dp"
+                android:showDividers="middle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TableLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <TableRow
+                    android:id="@+id/statTableHeader"
+                    android:layout_width="match_parent"
+                    android:divider="@color/blue"
+                    android:dividerPadding="1dp"
+                    android:showDividers="middle" />
+
+                <TableRow
+                    android:id="@+id/blueScoresRow"
+                    android:layout_width="match_parent"
                     android:divider="@color/blue"
                     android:dividerPadding="15dp"
-                    android:showDividers="middle"
-                    android:stretchColumns="*"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:divider="@color/blue"
-                        android:dividerPadding="1dp"
-                        android:showDividers="middle">
-
-                        <TextView
-                            android:id="@+id/sigStrikeCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="Sig. \n str." />
-
-                        <TextView
-                            android:id="@+id/strikeCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="Strk" />
-
-                        <TextView
-                            android:id="@+id/takedownsCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="TD" />
-
-                        <TextView
-                            android:id="@+id/submissionAttCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="Sub. \n att." />
-
-                        <TextView
-                            android:id="@+id/knockdownCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="KD" />
-
-                        <TextView
-                            android:id="@+id/passesCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="Pass." />
-
-                        <TextView
-                            android:id="@+id/reversesCell"
-                            style="@style/TableHeaderStyle"
-                            android:gravity="center"
-                            android:text="Revers." />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:divider="@color/blue"
-                        android:dividerPadding="15dp"
-                        android:showDividers="middle">
-
-                        <TextView
-                            android:id="@+id/blueSigStrikeCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/blue" />
-
-                        <TextView
-                            android:id="@+id/blueStrikeCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/lightBlue" />
-
-                        <TextView
-                            android:id="@+id/blueTakedownsCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="4"
-                            tools:background="@color/blue" />
-
-                        <TextView
-                            android:id="@+id/blueSubmissionAttCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="4"
-                            tools:background="@color/lightBlue" />
-
-                        <TextView
-                            android:id="@+id/blueKnockdownCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/blue" />
-
-                        <TextView
-                            android:id="@+id/bluePassesCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="6"
-                            tools:background="@color/lightBlue" />
-
-                        <TextView
-                            android:id="@+id/blueReversesCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="3"
-                            tools:background="@color/blue" />
-                    </TableRow>
+                    android:showDividers="middle" />
 
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:divider="@color/blue"
-                        android:dividerPadding="15dp"
-                        android:showDividers="middle">
-
-                        <TextView
-                            android:id="@+id/redSigStrikeCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/red" />
-
-                        <TextView
-                            android:id="@+id/redStrikeCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/lightRed" />
-
-                        <TextView
-                            android:id="@+id/redTakedownsCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="4"
-                            tools:background="@color/red" />
-
-                        <TextView
-                            android:id="@+id/redSubmissionAttCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="4"
-                            tools:background="@color/lightRed" />
-
-                        <TextView
-                            android:id="@+id/redKnockdownCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="5"
-                            tools:background="@color/red" />
-
-                        <TextView
-                            android:id="@+id/redPassesCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="6"
-                            tools:background="@color/lightRed" />
-
-                        <TextView
-                            android:id="@+id/redReversesCell"
-                            style="@style/TableTextStyle"
-                            android:gravity="center"
-                            android:text="3"
-                            tools:background="@color/red" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-        </ScrollView>
+                <TableRow
+                    android:id="@+id/redScoresRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:divider="@color/blue"
+                    android:dividerPadding="15dp"
+                    android:showDividers="middle" />
+            </TableLayout>
+        </HorizontalScrollView>
 
         <TableLayout
             android:id="@+id/checkboxTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:stretchColumns="*"
             app:layout_constraintEnd_toEndOf="parent"
@@ -237,31 +85,31 @@
                     style="@style/TableHeaderStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    tools:text="      " />
+                    android:text="@string/filler" />
 
                 <TextView
                     style="@style/TableHeaderStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    tools:text="Agressivness" />
+                    android:text="Agressivness" />
 
                 <TextView
                     style="@style/TableHeaderStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    tools:text="Damage \n dealt" />
+                    android:text="Damage \n dealt" />
 
                 <TextView
                     style="@style/TableHeaderStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    tools:text="Stance \n dominance" />
+                    android:text="Stance \n dominance" />
 
                 <TextView
                     style="@style/TableHeaderStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    tools:text="Wrestle \n dominance" />
+                    android:text="Wrestle \n dominance" />
 
             </TableRow>
 
@@ -271,8 +119,8 @@
                     style="@style/TableTextStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:textColor="@color/blue"
-                    tools:text="BLUE" />
+                    android:text="BLUE"
+                    android:textColor="@color/blue" />
 
                 <CheckBox
                     android:id="@+id/blueAggressivnessCheckbox"
@@ -298,8 +146,8 @@
                     style="@style/TableTextStyle"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:textColor="@color/red"
-                    tools:text="RED" />
+                    android:text="RED"
+                    android:textColor="@color/red" />
 
                 <CheckBox
                     android:id="@+id/redAggressivnessCheckbox"
@@ -319,12 +167,25 @@
             </TableRow>
         </TableLayout>
 
+        <TextView
+            android:id="@+id/round_overall_header"
+            style="@style/TableHeaderStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/underline_basic"
+            android:text="@string/overall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/pickerContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -333,14 +194,44 @@
             <NumberPicker
                 android:id="@+id/blueRoundScorePicker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:solidColor="@color/blue" />
 
             <NumberPicker
                 android:id="@+id/redRoundScorePicker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:solidColor="@color/red" />
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <RelativeLayout
+            android:id="@+id/footer_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/next_round_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/button_end_fight_text"
+                android:textSize="@dimen/button_text_size" />
+
+            <Button
+                android:id="@+id/end_fight_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/button_next_round_text"
+                android:textSize="@dimen/button_text_size" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

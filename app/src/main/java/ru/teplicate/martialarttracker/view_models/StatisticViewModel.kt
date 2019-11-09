@@ -18,6 +18,7 @@ class StatisticViewModelFactory(private val buttonIdsToScoresMap: MutableMap<Int
 
 class StatisticViewModel(val buttonIdsToScoresMap: MutableMap<Int, Int>) :
     ViewModel() {
+
     private val className = this::class.java.name
 
     val scoreIdToScoreMap =
@@ -40,5 +41,11 @@ class StatisticViewModel(val buttonIdsToScoresMap: MutableMap<Int, Int>) :
         val scoreId = buttonIdsToScoresMap.getValue(id)
         scoreIdToScoreMap[scoreId] = scoreIdToScoreMap.getValue(scoreId) + 1
         _textViewIdToUpdate.value = scoreId
+    }
+
+    fun getButtonIdToScoreValMap(): Map<Int, Int> {
+        return buttonIdsToScoresMap.map { (buttonId, scoreId) ->
+            buttonId to scoreIdToScoreMap.getValue(scoreId)
+        }.toMap()
     }
 }

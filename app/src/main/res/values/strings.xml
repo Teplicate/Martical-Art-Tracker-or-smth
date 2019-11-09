@@ -15,4 +15,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="round_stats">ROUND STATS</string>
+    <string name="overall">OVERALL</string>
+    <string name="filler" />
+    <string name="button_end_fight_text">End fight</string>
+    <string name="button_next_round_text">Next Round</string>
 </resources>
