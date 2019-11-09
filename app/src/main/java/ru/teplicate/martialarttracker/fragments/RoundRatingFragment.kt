@@ -106,8 +106,12 @@ class RoundRatingFragment : Fragment() {
         binding: FragmentRoundRatingBinding,
         fightersParameterScores: TransferContainer
     ) {
+        var isTd: Boolean
         var index = 0
-        fightersParameterScores.blueParameterScoe.forEach { (paramName, score) ->
+        fightersParameterScores.blueParameterScoe.forEach forEach@{ (paramName, score) ->
+            if (paramName == resources.getString(R.string.takedown_att_button_text))
+                return@forEach
+            isTd = paramName == resources.getString(R.string.takedown_button_text)
             binding.statTableHeader.addView(
                 createHeaderTextView(
                     paramName,
@@ -117,7 +121,12 @@ class RoundRatingFragment : Fragment() {
             binding.blueScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.BLUE,
-                    score,
+                    if (!isTd) score else {
+                        getScore(
+                            score,
+                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text))
+                        )
+                    },
                     binding.blueScoresRow.context,
                     index
                 )
@@ -126,19 +135,26 @@ class RoundRatingFragment : Fragment() {
             binding.redScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.RED,
-                    fightersParameterScores.redParameterScore.getValue(paramName),
+                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName) else {
+                        getScore(
+                            fightersParameterScores.redParameterScore.getValue(paramName),
+                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text))
+                        )
+                    }
+                    ,
                     binding.redScoresRow.context,
                     index
                 )
             )
             ++index
         }
-
     }
+
+    private fun getScore(td: Int, tdAtt: Int) = ((td * 1F / (td + tdAtt)) * 100).toInt() / 100F
 
     private fun createScoreTextView(
         compColor: CompetitorColor,
-        score: Int,
+        score: Number,
         context: Context,
         index: Int
     ): TextView {
