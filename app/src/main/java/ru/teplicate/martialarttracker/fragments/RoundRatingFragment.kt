@@ -96,8 +96,8 @@ class RoundRatingFragment : Fragment() {
 
     private fun getPickerOnValueChangedListener(oppositePicker: NumberPicker): NumberPicker.OnValueChangeListener {
         return NumberPicker.OnValueChangeListener { picker, _, newVal ->
-            if (newVal == picker.maxValue) {
-                oppositePicker.value = oppositePicker.minValue
+            if (newVal != picker.maxValue) {
+                oppositePicker.value = oppositePicker.maxValue
             }
         }
     }
