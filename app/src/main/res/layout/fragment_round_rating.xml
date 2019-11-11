@@ -53,7 +53,7 @@
                     android:id="@+id/blueScoresRow"
                     android:layout_width="match_parent"
                     android:divider="@color/blue"
-                    android:dividerPadding="15dp"
+                    android:dividerPadding="1dp"
                     android:showDividers="middle" />
 
 
@@ -114,7 +114,6 @@
             </TableRow>
 
             <TableRow android:id="@+id/blueCheckboxRow">
-
                 <TextView
                     style="@style/TableTextStyle"
                     android:layout_margin="2dp"
@@ -219,7 +218,7 @@
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/button_end_fight_text"
+                android:text="@string/button_next_round_text"
                 android:textSize="@dimen/button_text_size" />
 
             <Button
@@ -228,9 +227,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/button_next_round_text"
+                android:layout_marginEnd="10dp"
+                android:text="@string/button_end_fight_text"
                 android:textSize="@dimen/button_text_size" />
         </RelativeLayout>
     </LinearLayout>

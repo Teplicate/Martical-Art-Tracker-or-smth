@@ -7,4 +7,20 @@ import kotlinx.android.parcel.Parcelize
 class TransferContainer(
     val redParameterScore: Map<String, Int>,
     val blueParameterScoe: Map<String, Int>
-): Parcelable
+) : Parcelable
+
+@Parcelize
+data class RoundData(
+    val redScore: Short,
+    val blueScore: Short,
+    val redEffort: FighterEffort,
+    val blueEffort: FighterEffort
+) : Parcelable {
+    var number: Short? = null
+}
+
+@Parcelize
+data class FighterEffort(
+    val name: String,
+    val effortMap: Map<String, Boolean>
+) : Parcelable

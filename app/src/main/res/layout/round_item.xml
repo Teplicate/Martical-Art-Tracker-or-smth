@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="roundData"
+            type="ru.teplicate.martialarttracker.util.RoundData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/round_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Round #1" />
+
+            <TableLayout
+                android:id="@+id/fighter_effort"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:divider="@color/black"
+                android:showDividers="middle">
+
+                <TableRow
+                    android:id="@+id/headers"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="@string/filler" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Agressivness" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Damage \n dealt" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Stance \n dominance" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Wrestle \n dominance" />
+                </TableRow>
+
+                <TableRow android:id="@+id/fighter_effort_row" />
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Score:" />
+
+                <TextView
+                    android:id="@+id/blueScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="7" />
+
+                <TextView
+                    android:id="@+id/redScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Winner: " />
+
+                <TextView
+                    android:id="@+id/winner_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="RED" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

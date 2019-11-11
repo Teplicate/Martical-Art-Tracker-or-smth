@@ -13,13 +13,19 @@ import android.widget.CompoundButton
 import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import ru.teplicate.martialarttracker.R
 import ru.teplicate.martialarttracker.databinding.FragmentRoundRatingBinding
 import ru.teplicate.martialarttracker.util.CompetitorColor
+import ru.teplicate.martialarttracker.util.FighterEffort
+import ru.teplicate.martialarttracker.util.RoundData
 import ru.teplicate.martialarttracker.util.TransferContainer
+import ru.teplicate.martialarttracker.view_models.ActivityViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -40,9 +46,20 @@ class RoundRatingFragment : Fragment() {
             )
 
         val fightersParameterScores = RoundRatingFragmentArgs.fromBundle(arguments!!).fightersScores
+        val activityViewModel = ViewModelProviders.of(requireActivity())
+            .get(ActivityViewModel::class.java)
         fillScoreTable(binding, fightersParameterScores)
         preparePickers(binding)
         prepareCheckboxes(binding)
+        binding.nextRoundButton.setOnClickListener(
+            getOnNextRoundClickListener(
+                activityViewModel,
+                binding
+            )
+        )
+        binding.endFightButton.setOnClickListener(
+            getOnRoundEndClickListener(activityViewModel.rounds)
+        )
 
         return binding.root
     }
@@ -68,6 +85,56 @@ class RoundRatingFragment : Fragment() {
                 binding.blueStanceDominanceCheckbox
             )
         )
+    }
+
+    private fun getOnNextRoundClickListener(
+        activityViewModel: ActivityViewModel,
+        binding: FragmentRoundRatingBinding
+    ): View.OnClickListener {
+        return View.OnClickListener {
+            activityViewModel.passRoundData(extractRoundData(binding))
+            findNavController().navigate(RoundRatingFragmentDirections.actionRoundRatingFragmentToStatisticFragment())
+        }
+    }
+
+    private fun extractRoundData(binding: FragmentRoundRatingBinding): RoundData {
+        val (redEff, blueEff) = extractEfforts(binding)
+        return RoundData(
+            blueScore = binding.blueRoundScorePicker.value.toShort(),
+            redScore = binding.redRoundScorePicker.value.toShort(),
+            redEffort = redEff,
+            blueEffort = blueEff
+        )
+    }
+
+    private fun extractEfforts(binding: FragmentRoundRatingBinding): Pair<FighterEffort, FighterEffort> {
+        val redEffort = HashMap<String, Boolean>()
+        val blueEffort = HashMap<String, Boolean>()
+        val blueCheckbox = binding.blueCheckboxRow.children.asSequence().toList()
+        val redCheckbox = binding.redCheckboxRow.children.asSequence().toList()
+        var param: String
+        binding.checkboxTableHeaderRow.children
+            .forEachIndexed forEachIndexed@{ index, view ->
+                if (index == 0)
+                    return@forEachIndexed
+                param = (view as TextView).text.toString()
+                blueEffort[param] =
+                    (blueCheckbox[index] as CheckBox).isChecked
+                redEffort[param] = (redCheckbox[index] as CheckBox).isChecked
+            }
+
+        return FighterEffort(name = "RED", effortMap = redEffort) to
+                FighterEffort(name = "BLUE", effortMap = blueEffort)
+    }
+
+    private fun getOnRoundEndClickListener(roundsData: List<RoundData>): View.OnClickListener {
+        return View.OnClickListener {
+            findNavController().navigate(
+                RoundRatingFragmentDirections.actionRoundRatingFragmentToFightResultsFragment(
+                    roundsData.toTypedArray()
+                )
+            )
+        }
     }
 
     private fun getOnCheckedChangeListener(oppositeCheckbox: CheckBox): CompoundButton.OnCheckedChangeListener? {
