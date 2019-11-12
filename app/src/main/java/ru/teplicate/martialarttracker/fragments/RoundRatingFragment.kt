@@ -177,23 +177,23 @@ class RoundRatingFragment : Fragment() {
     ) {
         var isTd: Boolean
         var index = 0
-        fightersParameterScores.blueParameterScoe.forEach forEach@{ (paramName, score) ->
+        fightersParameterScores.blueParameterScoe.forEach forEach@{ (paramName, abbrScore) ->
             if (paramName == resources.getString(R.string.takedown_att_button_text))
                 return@forEach
             isTd = paramName == resources.getString(R.string.takedown_button_text)
             binding.statTableHeader.addView(
                 createHeaderTextView(
-                    paramName,
+                    abbrScore.first,
                     binding.statTableHeader.context
                 )
             )
             binding.blueScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.BLUE,
-                    if (!isTd) score else {
+                    if (!isTd) abbrScore.second else {
                         getScore(
-                            score,
-                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text))
+                            abbrScore.second,
+                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
                     },
                     binding.blueScoresRow.context,
@@ -204,10 +204,10 @@ class RoundRatingFragment : Fragment() {
             binding.redScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.RED,
-                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName) else {
+                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName).second else {
                         getScore(
-                            fightersParameterScores.redParameterScore.getValue(paramName),
-                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text))
+                            fightersParameterScores.redParameterScore.getValue(paramName).second,
+                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
                     }
                     ,

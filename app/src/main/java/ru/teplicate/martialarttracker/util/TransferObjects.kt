@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class TransferContainer(
-    val redParameterScore: Map<String, Int>,
-    val blueParameterScoe: Map<String, Int>
+    val redParameterScore: Map<String, Pair<String, Int>>,
+    val blueParameterScoe: Map<String, Pair<String, Int>>
 ) : Parcelable
 
 @Parcelize
