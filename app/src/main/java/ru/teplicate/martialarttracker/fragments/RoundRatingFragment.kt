@@ -58,7 +58,7 @@ class RoundRatingFragment : Fragment() {
             )
         )
         binding.endFightButton.setOnClickListener(
-            getOnRoundEndClickListener(activityViewModel.rounds)
+            getOnRoundEndClickListener(activityViewModel, binding)
         )
 
         return binding.root
@@ -108,30 +108,32 @@ class RoundRatingFragment : Fragment() {
     }
 
     private fun extractEfforts(binding: FragmentRoundRatingBinding): Pair<FighterEffort, FighterEffort> {
-        val redEffort = HashMap<String, Boolean>()
-        val blueEffort = HashMap<String, Boolean>()
+        val redEffort = ArrayList<Boolean>()
+        val blueEffort = ArrayList<Boolean>()
         val blueCheckbox = binding.blueCheckboxRow.children.asSequence().toList()
         val redCheckbox = binding.redCheckboxRow.children.asSequence().toList()
-        var param: String
         binding.checkboxTableHeaderRow.children
-            .forEachIndexed forEachIndexed@{ index, view ->
+            .forEachIndexed forEachIndexed@{ index, _ ->
                 if (index == 0)
                     return@forEachIndexed
-                param = (view as TextView).text.toString()
-                blueEffort[param] =
-                    (blueCheckbox[index] as CheckBox).isChecked
-                redEffort[param] = (redCheckbox[index] as CheckBox).isChecked
+
+                blueEffort.add((blueCheckbox[index] as CheckBox).isChecked)
+                redEffort.add((redCheckbox[index] as CheckBox).isChecked)
             }
 
-        return FighterEffort(name = "RED", effortMap = redEffort) to
-                FighterEffort(name = "BLUE", effortMap = blueEffort)
+        return FighterEffort(name = "RED", effortList = redEffort) to
+                FighterEffort(name = "BLUE", effortList = blueEffort)
     }
 
-    private fun getOnRoundEndClickListener(roundsData: List<RoundData>): View.OnClickListener {
+    private fun getOnRoundEndClickListener(
+        activityViewModel: ActivityViewModel,
+        binding: FragmentRoundRatingBinding
+    ): View.OnClickListener {
         return View.OnClickListener {
+            activityViewModel.passRoundData(extractRoundData(binding))
             findNavController().navigate(
                 RoundRatingFragmentDirections.actionRoundRatingFragmentToFightResultsFragment(
-                    roundsData.toTypedArray()
+                    activityViewModel.rounds.toTypedArray()
                 )
             )
         }

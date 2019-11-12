@@ -10,7 +10,7 @@ class TransferContainer(
 ) : Parcelable
 
 @Parcelize
-data class RoundData(
+class RoundData(
     val redScore: Short,
     val blueScore: Short,
     val redEffort: FighterEffort,
@@ -22,5 +22,5 @@ data class RoundData(
 @Parcelize
 data class FighterEffort(
     val name: String,
-    val effortMap: Map<String, Boolean>
+    val effortList: List<Boolean>
 ) : Parcelable

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -10,9 +11,11 @@
         tools:context=".fragments.FightResultsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_rounds_summary"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <LinearLayout
             android:id="@+id/fightWinnerContainer"

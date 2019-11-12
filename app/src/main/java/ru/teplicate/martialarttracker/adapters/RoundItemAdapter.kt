@@ -35,5 +35,6 @@ class RoundDataViewHolder(private val binding: RoundItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(roundData: RoundData) {
         binding.roundData = roundData
+        binding.executePendingBindings()
     }
 }
