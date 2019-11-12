@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constrainrContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,12 +25,15 @@
 
         <HorizontalScrollView
             android:id="@+id/scrollContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:isScrollContainer="true">
+            android:isScrollContainer="true"
+            app:layout_constraintBottom_toTopOf="@+id/checkboxTable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableName">
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -38,6 +41,7 @@
                 android:divider="@color/blue"
                 android:dividerPadding="15dp"
                 android:showDividers="middle"
+                android:stretchColumns="*"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -53,7 +57,7 @@
                     android:id="@+id/blueScoresRow"
                     android:layout_width="match_parent"
                     android:divider="@color/blue"
-                    android:dividerPadding="15dp"
+                    android:dividerPadding="1dp"
                     android:showDividers="middle" />
 
 
@@ -72,12 +76,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:stretchColumns="*"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/round_overall_header"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollContainer">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TableRow android:id="@+id/checkboxTableHeaderRow">
 
@@ -173,12 +176,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
             android:background="@drawable/underline_basic"
             android:text="@string/overall"
+            app:layout_constraintBottom_toTopOf="@+id/pickerContainer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/pickerContainer"
@@ -187,6 +189,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/footer_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkboxTable">
@@ -209,7 +212,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:orientation="horizontal">
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <Button
                 android:id="@+id/next_round_button"
@@ -219,7 +226,7 @@
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/button_end_fight_text"
+                android:text="@string/button_next_round_text"
                 android:textSize="@dimen/button_text_size" />
 
             <Button
@@ -228,10 +235,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/button_next_round_text"
+                android:layout_marginEnd="10dp"
+                android:text="@string/button_end_fight_text"
                 android:textSize="@dimen/button_text_size" />
         </RelativeLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="roundData"
+            type="ru.teplicate.martialarttracker.util.RoundData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/round_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/round_number"
+                app:round_number="@{ roundData.number }"
+                tools:text="Round #1" />
+
+            <TableLayout
+                android:id="@+id/fighter_effort"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:divider="@color/black"
+                android:showDividers="middle">
+
+                <TableRow
+                    android:id="@+id/headers"
+                    android:layout_width="match_parent"
+                    android:divider="@color/black"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Agressivness" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Damage \n dealt" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Stance \n dominance" />
+
+                    <TextView
+                        style="@style/TableHeaderStyle"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="Wrestle \n dominance" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/fighter_effort_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/dark_grey"
+                    android:showDividers="middle"
+                    app:fighters_efforts="@{ roundData }" />
+
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score: "
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/blueScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue"
+                    app:blue_score="@{ roundData }"
+                    tools:text="7" />
+
+                <TextView
+                    android:id="@+id/redScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:textColor="@color/red"
+                    app:red_score="@{ roundData }"
+                    tools:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Round winner: "
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/winner_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:winner="@{ roundData }"
+                    tools:text="RED" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

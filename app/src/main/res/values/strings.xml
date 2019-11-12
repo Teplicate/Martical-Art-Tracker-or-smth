@@ -20,4 +20,12 @@
     <string name="filler" />
     <string name="button_end_fight_text">End fight</string>
     <string name="button_next_round_text">Next Round</string>
+    <string name="round_number">Round %1$d</string>
+    <string name="sig_str_abbr">Sig. str</string>
+    <string name="str_abbr">Str</string>
+    <string name="td_abbr">TD</string>
+    <string name="sub_att_abbr">Sub. att</string>
+    <string name="kd_abbr">KD</string>
+    <string name="pass_abbr">Pas</string>
+    <string name="rev_abbr">Rev</string>
 </resources>

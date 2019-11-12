@@ -13,13 +13,19 @@ import android.widget.CompoundButton
 import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import ru.teplicate.martialarttracker.R
 import ru.teplicate.martialarttracker.databinding.FragmentRoundRatingBinding
 import ru.teplicate.martialarttracker.util.CompetitorColor
+import ru.teplicate.martialarttracker.util.FighterEffort
+import ru.teplicate.martialarttracker.util.RoundData
 import ru.teplicate.martialarttracker.util.TransferContainer
+import ru.teplicate.martialarttracker.view_models.ActivityViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -40,9 +46,20 @@ class RoundRatingFragment : Fragment() {
             )
 
         val fightersParameterScores = RoundRatingFragmentArgs.fromBundle(arguments!!).fightersScores
+        val activityViewModel = ViewModelProviders.of(requireActivity())
+            .get(ActivityViewModel::class.java)
         fillScoreTable(binding, fightersParameterScores)
         preparePickers(binding)
         prepareCheckboxes(binding)
+        binding.nextRoundButton.setOnClickListener(
+            getOnNextRoundClickListener(
+                activityViewModel,
+                binding
+            )
+        )
+        binding.endFightButton.setOnClickListener(
+            getOnRoundEndClickListener(activityViewModel, binding)
+        )
 
         return binding.root
     }
@@ -68,6 +85,58 @@ class RoundRatingFragment : Fragment() {
                 binding.blueStanceDominanceCheckbox
             )
         )
+    }
+
+    private fun getOnNextRoundClickListener(
+        activityViewModel: ActivityViewModel,
+        binding: FragmentRoundRatingBinding
+    ): View.OnClickListener {
+        return View.OnClickListener {
+            activityViewModel.passRoundData(extractRoundData(binding))
+            findNavController().navigate(RoundRatingFragmentDirections.actionRoundRatingFragmentToStatisticFragment())
+        }
+    }
+
+    private fun extractRoundData(binding: FragmentRoundRatingBinding): RoundData {
+        val (redEff, blueEff) = extractEfforts(binding)
+        return RoundData(
+            blueScore = binding.blueRoundScorePicker.value.toShort(),
+            redScore = binding.redRoundScorePicker.value.toShort(),
+            redEffort = redEff,
+            blueEffort = blueEff
+        )
+    }
+
+    private fun extractEfforts(binding: FragmentRoundRatingBinding): Pair<FighterEffort, FighterEffort> {
+        val redEffort = ArrayList<Boolean>()
+        val blueEffort = ArrayList<Boolean>()
+        val blueCheckbox = binding.blueCheckboxRow.children.asSequence().toList()
+        val redCheckbox = binding.redCheckboxRow.children.asSequence().toList()
+        binding.checkboxTableHeaderRow.children
+            .forEachIndexed forEachIndexed@{ index, _ ->
+                if (index == 0)
+                    return@forEachIndexed
+
+                blueEffort.add((blueCheckbox[index] as CheckBox).isChecked)
+                redEffort.add((redCheckbox[index] as CheckBox).isChecked)
+            }
+
+        return FighterEffort(name = "RED", effortList = redEffort) to
+                FighterEffort(name = "BLUE", effortList = blueEffort)
+    }
+
+    private fun getOnRoundEndClickListener(
+        activityViewModel: ActivityViewModel,
+        binding: FragmentRoundRatingBinding
+    ): View.OnClickListener {
+        return View.OnClickListener {
+            activityViewModel.passRoundData(extractRoundData(binding))
+            findNavController().navigate(
+                RoundRatingFragmentDirections.actionRoundRatingFragmentToFightResultsFragment(
+                    activityViewModel.rounds.toTypedArray()
+                )
+            )
+        }
     }
 
     private fun getOnCheckedChangeListener(oppositeCheckbox: CheckBox): CompoundButton.OnCheckedChangeListener? {
@@ -96,8 +165,8 @@ class RoundRatingFragment : Fragment() {
 
     private fun getPickerOnValueChangedListener(oppositePicker: NumberPicker): NumberPicker.OnValueChangeListener {
         return NumberPicker.OnValueChangeListener { picker, _, newVal ->
-            if (newVal == picker.maxValue) {
-                oppositePicker.value = oppositePicker.minValue
+            if (newVal != picker.maxValue) {
+                oppositePicker.value = oppositePicker.maxValue
             }
         }
     }
@@ -108,23 +177,23 @@ class RoundRatingFragment : Fragment() {
     ) {
         var isTd: Boolean
         var index = 0
-        fightersParameterScores.blueParameterScoe.forEach forEach@{ (paramName, score) ->
+        fightersParameterScores.blueParameterScoe.forEach forEach@{ (paramName, abbrScore) ->
             if (paramName == resources.getString(R.string.takedown_att_button_text))
                 return@forEach
             isTd = paramName == resources.getString(R.string.takedown_button_text)
             binding.statTableHeader.addView(
                 createHeaderTextView(
-                    paramName,
+                    abbrScore.first,
                     binding.statTableHeader.context
                 )
             )
             binding.blueScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.BLUE,
-                    if (!isTd) score else {
+                    if (!isTd) abbrScore.second else {
                         getScore(
-                            score,
-                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text))
+                            abbrScore.second,
+                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
                     },
                     binding.blueScoresRow.context,
@@ -135,10 +204,10 @@ class RoundRatingFragment : Fragment() {
             binding.redScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.RED,
-                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName) else {
+                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName).second else {
                         getScore(
-                            fightersParameterScores.redParameterScore.getValue(paramName),
-                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text))
+                            fightersParameterScores.redParameterScore.getValue(paramName).second,
+                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
                     }
                     ,

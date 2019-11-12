@@ -26,5 +26,20 @@
         <argument
             android:name="fightersScores"
             app:argType="ru.teplicate.martialarttracker.util.TransferContainer" />
+        <action
+            android:id="@+id/action_roundRatingFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
+        <action
+            android:id="@+id/action_roundRatingFragment_to_fightResultsFragment"
+            app:destination="@id/fightResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fightResultsFragment"
+        android:name="ru.teplicate.martialarttracker.fragments.FightResultsFragment"
+        android:label="fragment_fight_results"
+        tools:layout="@layout/fragment_fight_results" >
+        <argument
+            android:name="roundsData"
+            app:argType="ru.teplicate.martialarttracker.util.RoundData[]" />
     </fragment>
 </navigation>
