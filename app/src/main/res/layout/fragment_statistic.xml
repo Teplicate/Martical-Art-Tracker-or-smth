@@ -20,13 +20,11 @@
             android:id="@+id/screenDivider"
             android:layout_width="2dp"
             android:layout_height="0dp"
-            android:layout_marginTop="54dp"
-            android:layout_marginBottom="16dp"
             android:background="#918A8A"
-            app:layout_constraintBottom_toTopOf="@+id/roundEndButton"
+            app:layout_constraintBottom_toBottomOf="@+id/blueTilesContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/blueTilesContainer" />
 
         <LinearLayout
             android:id="@+id/blueTilesContainer"
