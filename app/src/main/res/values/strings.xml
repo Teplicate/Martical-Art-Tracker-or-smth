@@ -7,7 +7,7 @@
     <string name="sig_strike_button_text">Sig. Strike</string>
     <string name="strike_button_text">Strike</string>
     <string name="takedown_att_button_text">Takedown \n attempt</string>
-    <string name="takedown_button_text">Takedown \n success</string>
+    <string name="takedown_button_text">Takedown</string>
     <string name="submission_att_button_text">Submission \n attempt</string>
     <string name="knockdowns">Knock -\ndowns</string>
     <string name="passes">Passes</string>
@@ -28,4 +28,5 @@
     <string name="kd_abbr">KD</string>
     <string name="pass_abbr">Pas</string>
     <string name="rev_abbr">Rev</string>
+    <string name="td_pattern">%1$d/%2$d</string>
 </resources>

@@ -222,10 +222,11 @@
                 android:id="@+id/next_round_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+
                 android:layout_gravity="start"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_alignParentEnd="true"
                 android:text="@string/button_next_round_text"
                 android:textSize="@dimen/button_text_size" />
 
@@ -233,10 +234,10 @@
                 android:id="@+id/end_fight_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
                 android:layout_gravity="end"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/button_end_fight_text"
                 android:textSize="@dimen/button_text_size" />
         </RelativeLayout>

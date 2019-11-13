@@ -122,8 +122,8 @@ class StatisticFragment : Fragment() {
     private fun getFightersScores(viewModel: StatisticViewModel): TransferContainer {
         Log.i(className, "Making map")
         var sButton: SwipeableButton
-        val redParameterScore = HashMap<String, Pair<String, Int>>()
-        val blueParameterScore = HashMap<String, Pair<String, Int>>()
+        val redParameterScore = LinkedHashMap<String, Pair<String, Int>>()
+        val blueParameterScore = LinkedHashMap<String, Pair<String, Int>>()
 
         viewModel.getButtonIdToScoreValMap()
             .forEach { (buttonId, score) ->
@@ -135,14 +135,13 @@ class StatisticFragment : Fragment() {
                             sButton.tag.toString(),
                             score
                         )
-
                 }
                 if ((sButton.parent as LinearLayout).tag.toString() == CompetitorColor.BLUE.title) {
                     blueParameterScore[sButton.text.toString()] =
-                    Pair(
-                        sButton.tag.toString(),
-                        score
-                    )
+                        Pair(
+                            sButton.tag.toString(),
+                            score
+                        )
                 }
             }
 

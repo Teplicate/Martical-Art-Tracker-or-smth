@@ -151,6 +151,9 @@ class RoundRatingFragment : Fragment() {
         binding.blueRoundScorePicker.minValue = 7
         binding.redRoundScorePicker.minValue = 7
         binding.redRoundScorePicker.maxValue = 10
+        binding.blueRoundScorePicker.value = binding.blueRoundScorePicker.maxValue
+        binding.redRoundScorePicker.value = binding.redRoundScorePicker.maxValue
+
         binding.blueRoundScorePicker.setOnValueChangedListener(
             getPickerOnValueChangedListener(
                 binding.redRoundScorePicker
@@ -190,8 +193,9 @@ class RoundRatingFragment : Fragment() {
             binding.blueScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.BLUE,
-                    if (!isTd) abbrScore.second else {
-                        getScore(
+                    if (!isTd) abbrScore.second.toString() else {
+                        resources.getString(
+                            R.string.td_pattern,
                             abbrScore.second,
                             fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
@@ -204,8 +208,9 @@ class RoundRatingFragment : Fragment() {
             binding.redScoresRow.addView(
                 createScoreTextView(
                     CompetitorColor.RED,
-                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName).second else {
-                        getScore(
+                    if (!isTd) fightersParameterScores.redParameterScore.getValue(paramName).second.toString() else {
+                        resources.getString(
+                            R.string.td_pattern,
                             fightersParameterScores.redParameterScore.getValue(paramName).second,
                             fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text)).second
                         )
@@ -223,7 +228,7 @@ class RoundRatingFragment : Fragment() {
 
     private fun createScoreTextView(
         compColor: CompetitorColor,
-        score: Number,
+        score: String,
         context: Context,
         index: Int
     ): TextView {
@@ -231,7 +236,7 @@ class RoundRatingFragment : Fragment() {
             it.background = getScoreBackgroundColor(compColor, index, context)
             it.setTextColor(ContextCompat.getColor(context, R.color.white))
             it.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            it.text = score.toString()
+            it.text = score
             it.textSize = resources.getDimension(R.dimen.cell_text_size)
             it.setPadding(resources.getDimension(R.dimen.cell_padding).toInt())
         }
