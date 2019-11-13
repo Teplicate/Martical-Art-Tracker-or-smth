@@ -30,9 +30,21 @@ class FightResultsFragment : Fragment() {
         val roundsList = FightResultsFragmentArgs.fromBundle(arguments!!).roundsData
         binding.recyclerRoundsSummary.adapter = roundsAdapter
         roundsAdapter.submitList(roundsList.toList())
+        setOverallScores(roundsList, binding)
         setWinner(binding.winnerName, roundsList)
 
         return binding.root
+    }
+
+    private fun setOverallScores(
+        roundsList: Array<RoundData>,
+        binding: FragmentFightResultsBinding
+    ) {
+        val blue = roundsList.sumBy { it.blueScore.toInt() }
+        val red = roundsList.sumBy { it.redScore.toInt() }
+
+        binding.redOverall.text = red.toString()
+        binding.blueOverall.text = blue.toString()
     }
 
     private fun setWinner(winnerView: TextView, roundsList: Array<RoundData>) {
