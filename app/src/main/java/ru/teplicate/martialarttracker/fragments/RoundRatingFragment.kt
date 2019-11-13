@@ -46,8 +46,10 @@ class RoundRatingFragment : Fragment() {
             )
 
         val fightersParameterScores = RoundRatingFragmentArgs.fromBundle(arguments!!).fightersScores
+        val round = RoundRatingFragmentArgs.fromBundle(arguments!!).round
         val activityViewModel = ViewModelProviders.of(requireActivity())
             .get(ActivityViewModel::class.java)
+        setRound(binding.tableName, round)
         fillScoreTable(binding, fightersParameterScores)
         preparePickers(binding)
         prepareCheckboxes(binding)
@@ -62,6 +64,10 @@ class RoundRatingFragment : Fragment() {
         )
 
         return binding.root
+    }
+
+    private fun setRound(tableName: TextView, round: Int) {
+        tableName.text = resources.getString(R.string.round_stats_template, round)
     }
 
     private fun prepareCheckboxes(binding: FragmentRoundRatingBinding) {

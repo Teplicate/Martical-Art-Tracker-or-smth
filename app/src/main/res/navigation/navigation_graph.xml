@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_roundRatingFragment_to_fightResultsFragment"
             app:destination="@id/fightResultsFragment" />
+        <argument
+            android:name="round"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fightResultsFragment"

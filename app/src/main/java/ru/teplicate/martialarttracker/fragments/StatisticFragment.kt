@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.children
@@ -20,6 +21,7 @@ import ru.teplicate.martialarttracker.custom_view.SwipeableButton
 import ru.teplicate.martialarttracker.databinding.FragmentStatisticBinding
 import ru.teplicate.martialarttracker.util.CompetitorColor
 import ru.teplicate.martialarttracker.util.TransferContainer
+import ru.teplicate.martialarttracker.view_models.ActivityViewModel
 import ru.teplicate.martialarttracker.view_models.StatisticViewModel
 import ru.teplicate.martialarttracker.view_models.StatisticViewModelFactory
 
@@ -41,6 +43,8 @@ class StatisticFragment : Fragment() {
         )
         binding.lifecycleOwner = this
 
+        val activityViewModel =
+            ViewModelProviders.of(requireActivity()).get(ActivityViewModel::class.java)
         val blueScoreIds = binding.bluePointsContainer.children.map { it.id }.toList()
         val blueButtonIdToScoreId = binding.blueTilesContainer.children.mapIndexed { index, view ->
             view.id to blueScoreIds[index]
@@ -79,9 +83,20 @@ class StatisticFragment : Fragment() {
             getScoreViewObserver(viewModel, scoreViewIdToSelf)
         )
 
-        binding.roundEndButton.setOnClickListener(onRoundEndButtonClickListener(viewModel))
+        binding.roundEndButton.setOnClickListener(
+            onRoundEndButtonClickListener(
+                viewModel,
+                activityViewModel.rounds.size + 1
+            )
+        )
+        setRoundButtonText(activityViewModel, binding.roundEndButton)
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    private fun setRoundButtonText(activityViewModel: ActivityViewModel, roundEndButton: Button) {
+        roundEndButton.text =
+            resources.getString(R.string.round_template, activityViewModel.rounds.size + 1)
     }
 
     private fun getOnSwipeListener(viewModel: StatisticViewModel): OnSwipeListener {
@@ -108,12 +123,16 @@ class StatisticFragment : Fragment() {
         }
     }
 
-    private fun onRoundEndButtonClickListener(viewModel: StatisticViewModel): View.OnClickListener {
+    private fun onRoundEndButtonClickListener(
+        viewModel: StatisticViewModel,
+        round: Int
+    ): View.OnClickListener {
         Log.i(className, "Button clicked preparing to move")
         return View.OnClickListener {
             findNavController().navigate(
                 StatisticFragmentDirections.actionStatisticFragmentToRoundRatingFragment(
-                    getFightersScores(viewModel)
+                    getFightersScores(viewModel),
+                    round
                 )
             )
         }
