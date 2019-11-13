@@ -23,5 +23,6 @@ enum class ParamBoolName(val title: String) {
 
 enum class CompetitorColor(val title: String) {
     RED("RED"),
-    BLUE("BLUE")
+    BLUE("BLUE"),
+    DRAW("DRAW")
 }

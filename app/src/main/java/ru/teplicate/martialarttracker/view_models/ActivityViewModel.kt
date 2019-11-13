@@ -12,4 +12,8 @@ class ActivityViewModel : ViewModel() {
         roundData.number = (_rounds.size + 1).toShort()
         _rounds.add(roundData)
     }
+
+    fun clearRoundsHistory() {
+        _rounds.clear()
+    }
 }

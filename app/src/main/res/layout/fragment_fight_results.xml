@@ -103,19 +103,19 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
-                android:id="@+id/new_fight"
+                android:id="@+id/exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="next fight"
+                android:text="exit"
                 android:textSize="@dimen/button_text_size" />
 
             <Button
-                android:id="@+id/complete"
+                android:id="@+id/new_fight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="exit"
+                android:text="next fight"
                 android:textSize="@dimen/button_text_size" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

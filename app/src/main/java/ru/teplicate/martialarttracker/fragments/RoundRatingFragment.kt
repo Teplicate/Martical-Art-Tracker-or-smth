@@ -265,7 +265,7 @@ class RoundRatingFragment : Fragment() {
                     context,
                     R.color.lightBlue
                 ) else ContextCompat.getDrawable(context, R.color.blue)
-            }
+            } else -> throw IllegalArgumentException("you shouldn't be here ${compColor.title}")
         }
     }
 

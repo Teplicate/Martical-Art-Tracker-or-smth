@@ -7,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_statistic.view.*
 
 import ru.teplicate.martialarttracker.R
 import ru.teplicate.martialarttracker.adapters.RoundItemAdapter
 import ru.teplicate.martialarttracker.databinding.FragmentFightResultsBinding
+import ru.teplicate.martialarttracker.util.CompetitorColor
 import ru.teplicate.martialarttracker.util.RoundData
+import ru.teplicate.martialarttracker.view_models.ActivityViewModel
+import kotlin.system.exitProcess
 
 /**
  * A simple [Fragment] subclass.
@@ -26,12 +32,16 @@ class FightResultsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentFightResultsBinding.inflate(inflater, container, false)
+        val activityViewModel =
+            ViewModelProviders.of(requireActivity()).get(ActivityViewModel::class.java)
         val roundsAdapter = RoundItemAdapter()
         val roundsList = FightResultsFragmentArgs.fromBundle(arguments!!).roundsData
         binding.recyclerRoundsSummary.adapter = roundsAdapter
         roundsAdapter.submitList(roundsList.toList())
         setOverallScores(roundsList, binding)
         setWinner(binding.winnerName, roundsList)
+        binding.newFight.setOnClickListener(getOnNewFightClickListener(activityViewModel))
+        binding.exit.setOnClickListener(getOnExitClickListner())
 
         return binding.root
     }
@@ -58,14 +68,28 @@ class FightResultsFragment : Fragment() {
         }
 
         when {
-            blue < red -> setWinnerName(winnerView, R.color.red, "RED")
-            blue > red -> setWinnerName(winnerView, R.color.blue, "BLUE")
-            else -> setWinnerName(winnerView, R.color.dark_grey, "DRAW")
+            blue < red -> setWinnerName(winnerView, R.color.red, CompetitorColor.RED.title)
+            blue > red -> setWinnerName(winnerView, R.color.blue, CompetitorColor.BLUE.title)
+            else -> setWinnerName(winnerView, R.color.dark_grey, CompetitorColor.DRAW.title)
         }
     }
 
     private fun setWinnerName(winnerView: TextView, colorRes: Int, s: String) {
         winnerView.text = s
         winnerView.background = ContextCompat.getDrawable(winnerView.context, colorRes)
+    }
+
+    private fun getOnExitClickListner(): View.OnClickListener {
+        return View.OnClickListener {
+            Toast.makeText(context, "Bye", Toast.LENGTH_SHORT).show()
+            exitProcess(0)
+        }
+    }
+
+    private fun getOnNewFightClickListener(activityViewModel: ActivityViewModel): View.OnClickListener {
+        return View.OnClickListener {
+            activityViewModel.clearRoundsHistory()
+            findNavController().navigate(FightResultsFragmentDirections.actionFightResultsFragmentToStatisticFragment())
+        }
     }
 }

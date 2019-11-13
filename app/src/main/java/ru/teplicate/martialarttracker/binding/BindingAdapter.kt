@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import androidx.databinding.BindingAdapter
 import ru.teplicate.martialarttracker.R
+import ru.teplicate.martialarttracker.util.CompetitorColor
 import ru.teplicate.martialarttracker.util.RoundData
 
 @BindingAdapter("round_number")
@@ -62,7 +63,7 @@ fun bindWinner(textView: TextView, roundData: RoundData?) {
                         R.color.blue
                     )
                 )
-                textView.text = "BLUE"
+                textView.text = CompetitorColor.BLUE.title
             }
             roundData.blueScore < roundData.redScore -> {
                 textView.setTextColor(
@@ -71,7 +72,7 @@ fun bindWinner(textView: TextView, roundData: RoundData?) {
                         R.color.red
                     )
                 )
-                textView.text = "RED"
+                textView.text = CompetitorColor.RED.title
             }
             else -> {
                 textView.setTextColor(
@@ -80,7 +81,7 @@ fun bindWinner(textView: TextView, roundData: RoundData?) {
                         R.color.black
                     )
                 )
-                textView.text = "DRAW"
+                textView.text = CompetitorColor.DRAW.title
             }
         }
     }
