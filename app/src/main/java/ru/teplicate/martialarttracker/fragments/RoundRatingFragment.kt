@@ -203,7 +203,9 @@ class RoundRatingFragment : Fragment() {
                         resources.getString(
                             R.string.td_pattern,
                             abbrScore.second,
-                            fightersParameterScores.blueParameterScoe.getValue(resources.getString(R.string.takedown_att_button_text)).second
+                            abbrScore.second + fightersParameterScores.blueParameterScoe.getValue(
+                                resources.getString(R.string.takedown_att_button_text)
+                            ).second
                         )
                     },
                     binding.blueScoresRow.context,
@@ -218,7 +220,9 @@ class RoundRatingFragment : Fragment() {
                         resources.getString(
                             R.string.td_pattern,
                             fightersParameterScores.redParameterScore.getValue(paramName).second,
-                            fightersParameterScores.redParameterScore.getValue(resources.getString(R.string.takedown_att_button_text)).second
+                            fightersParameterScores.redParameterScore.getValue(paramName).second + fightersParameterScores.redParameterScore.getValue(
+                                resources.getString(R.string.takedown_att_button_text)
+                            ).second
                         )
                     }
                     ,
@@ -229,8 +233,6 @@ class RoundRatingFragment : Fragment() {
             ++index
         }
     }
-
-    private fun getScore(td: Int, tdAtt: Int) = ((td * 1F / (td + tdAtt)) * 100).toInt() / 100F
 
     private fun createScoreTextView(
         compColor: CompetitorColor,
@@ -265,7 +267,8 @@ class RoundRatingFragment : Fragment() {
                     context,
                     R.color.lightBlue
                 ) else ContextCompat.getDrawable(context, R.color.blue)
-            } else -> throw IllegalArgumentException("you shouldn't be here ${compColor.title}")
+            }
+            else -> throw IllegalArgumentException("you shouldn't be here ${compColor.title}")
         }
     }
 

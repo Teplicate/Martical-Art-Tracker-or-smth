@@ -21,53 +21,54 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollContainer"
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/scrollContainer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="130dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:isScrollContainer="true"-->
+<!--            >-->
+
+        <TableLayout
+            android:id="@+id/statsTable"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:isScrollContainer="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:divider="@color/blue"
+            android:dividerPadding="15dp"
+            android:showDividers="middle"
+            android:stretchColumns="*"
             app:layout_constraintBottom_toTopOf="@+id/checkboxTable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tableName">
 
-            <TableLayout
+            <TableRow
+                android:id="@+id/statTableHeader"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:divider="@color/blue"
+                android:dividerPadding="1dp"
+                android:showDividers="middle" />
+
+            <TableRow
+                android:id="@+id/blueScoresRow"
+                android:layout_width="match_parent"
+                android:divider="@color/blue"
+                android:dividerPadding="1dp"
+                android:showDividers="middle" />
+
+
+            <TableRow
+                android:id="@+id/redScoresRow"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:divider="@color/blue"
                 android:dividerPadding="15dp"
-                android:showDividers="middle"
-                android:stretchColumns="*"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TableRow
-                    android:id="@+id/statTableHeader"
-                    android:layout_width="match_parent"
-                    android:divider="@color/blue"
-                    android:dividerPadding="1dp"
-                    android:showDividers="middle" />
-
-                <TableRow
-                    android:id="@+id/blueScoresRow"
-                    android:layout_width="match_parent"
-                    android:divider="@color/blue"
-                    android:dividerPadding="1dp"
-                    android:showDividers="middle" />
-
-
-                <TableRow
-                    android:id="@+id/redScoresRow"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:divider="@color/blue"
-                    android:dividerPadding="15dp"
-                    android:showDividers="middle" />
-            </TableLayout>
-        </HorizontalScrollView>
+                android:showDividers="middle" />
+        </TableLayout>
+<!--        </HorizontalScrollView>-->
 
         <TableLayout
             android:id="@+id/checkboxTable"
@@ -188,22 +189,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="32dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/footer_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxTable">
+            app:layout_constraintStart_toStartOf="parent">
 
             <NumberPicker
                 android:id="@+id/blueRoundScorePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
                 android:solidColor="@color/blue" />
 
             <NumberPicker
                 android:id="@+id/redRoundScorePicker"
                 android:layout_width="wrap_content"
+                android:descendantFocusability="blocksDescendants"
                 android:layout_height="wrap_content"
                 android:solidColor="@color/red" />
         </LinearLayout>
