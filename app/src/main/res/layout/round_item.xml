@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:orientation="vertical"
         app:cardCornerRadius="6dp"
@@ -52,7 +52,7 @@
                         style="@style/TableHeaderStyle"
                         android:layout_margin="4dp"
                         android:gravity="center"
-                        android:text="Agressivness" />
+                        android:text="@string/agressivness" />
 
                     <TextView
                         style="@style/TableHeaderStyle"
@@ -119,6 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
                 android:gravity="start"
                 android:orientation="horizontal">
 
