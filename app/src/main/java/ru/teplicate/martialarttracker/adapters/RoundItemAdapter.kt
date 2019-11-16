@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.teplicate.martialarttracker.databinding.RoundItemBinding
 import ru.teplicate.martialarttracker.util.RoundData
 
-class RoundItemAdapter : ListAdapter<RoundData, RoundDataViewHolder>(RoundDataDiffCallback) {
+class RoundItemAdapter : ListAdapter<RoundData, RoundDataViewHolder>(
+    RoundDataDiffCallback
+) {
     companion object RoundDataDiffCallback : DiffUtil.ItemCallback<RoundData>() {
         override fun areItemsTheSame(oldItem: RoundData, newItem: RoundData): Boolean {
             return oldItem == newItem

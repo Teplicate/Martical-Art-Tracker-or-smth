@@ -1,7 +1,5 @@
 package ru.teplicate.martialarttracker.util
 
-import ru.teplicate.martialarttracker.R
-
 enum class ParamScoreName(val title: String) {
     TAKEDOWN("Takedown"),
     SIGNIFICANT_STRIKE("Sig. str."),

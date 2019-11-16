@@ -11,10 +11,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_statistic.view.*
-
 import ru.teplicate.martialarttracker.R
+
 import ru.teplicate.martialarttracker.adapters.RoundItemAdapter
 import ru.teplicate.martialarttracker.databinding.FragmentFightResultsBinding
 import ru.teplicate.martialarttracker.util.CompetitorColor
@@ -35,7 +33,9 @@ class FightResultsFragment : Fragment() {
         val activityViewModel =
             ViewModelProviders.of(requireActivity()).get(ActivityViewModel::class.java)
         val roundsAdapter = RoundItemAdapter()
-        val roundsList = FightResultsFragmentArgs.fromBundle(arguments!!).roundsData
+        val roundsList = FightResultsFragmentArgs.fromBundle(
+            arguments!!
+        ).roundsData
         binding.recyclerRoundsSummary.adapter = roundsAdapter
         roundsAdapter.submitList(roundsList.toList())
         setOverallScores(roundsList, binding)

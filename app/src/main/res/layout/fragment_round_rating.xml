@@ -32,13 +32,14 @@
 
         <TableLayout
             android:id="@+id/statsTable"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:divider="@color/blue"
-            android:dividerPadding="15dp"
             android:showDividers="middle"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="0dp"
             android:stretchColumns="*"
             app:layout_constraintBottom_toTopOf="@+id/checkboxTable"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,23 +50,19 @@
                 android:id="@+id/statTableHeader"
                 android:layout_width="match_parent"
                 android:divider="@color/blue"
-                android:dividerPadding="1dp"
                 android:showDividers="middle" />
 
             <TableRow
                 android:id="@+id/blueScoresRow"
                 android:layout_width="match_parent"
                 android:divider="@color/blue"
-                android:dividerPadding="1dp"
                 android:showDividers="middle" />
 
 
             <TableRow
                 android:id="@+id/redScoresRow"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
                 android:divider="@color/blue"
-                android:dividerPadding="15dp"
                 android:showDividers="middle" />
         </TableLayout>
 <!--        </HorizontalScrollView>-->

@@ -28,9 +28,31 @@ fun bindEfforts(tableRow: TableRow, roundData: RoundData?) {
         for (i in 0 until roundData.blueEffort.effortList.size) {
             container = getContainer(tableRow.context)
             if (roundData.blueEffort.effortList[i])
-                container.addView(getMark(tableRow.context, false))
+                container.addView(
+                    getMark(
+                        tableRow.context,
+                        R.drawable.blue_mark
+                    )
+                )
+            else container.addView(
+                getMark(
+                    tableRow.context,
+                    R.drawable.transparent_mark
+                )
+            )
             if (roundData.redEffort.effortList[i])
-                container.addView(getMark(tableRow.context, true))
+                container.addView(
+                    getMark(
+                        tableRow.context,
+                        R.drawable.red_mark
+                    )
+                )
+            else container.addView(
+                getMark(
+                    tableRow.context,
+                    R.drawable.transparent_mark
+                )
+            )
             tableRow.addView(container, TableRow.LayoutParams(i))
         }
     }
@@ -87,10 +109,8 @@ fun bindWinner(textView: TextView, roundData: RoundData?) {
     }
 }
 
-private fun getMark(context: Context, isRed: Boolean): ImageView {
-    return if (isRed) {
-        getImageView(context, R.drawable.red_mark)
-    } else getImageView(context, R.drawable.blue_mark)
+private fun getMark(context: Context, color: Int): ImageView {
+    return getImageView(context, color)
 }
 
 private fun getImageView(context: Context, imgResource: Int): ImageView {
@@ -110,8 +130,8 @@ private fun getImageView(context: Context, imgResource: Int): ImageView {
 private fun getContainer(context: Context): LinearLayout {
     val l = LinearLayout(context)
     l.layoutParams = ViewGroup.LayoutParams(
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        LinearLayout.LayoutParams.WRAP_CONTENT
+        LinearLayout.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams.MATCH_PARENT
     )
     l.gravity = Gravity.CENTER
     l.orientation = LinearLayout.HORIZONTAL

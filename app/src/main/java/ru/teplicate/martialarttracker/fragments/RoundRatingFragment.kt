@@ -8,18 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.CompoundButton
-import android.widget.NumberPicker
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-
 import ru.teplicate.martialarttracker.R
+
 import ru.teplicate.martialarttracker.databinding.FragmentRoundRatingBinding
 import ru.teplicate.martialarttracker.util.CompetitorColor
 import ru.teplicate.martialarttracker.util.FighterEffort
@@ -45,8 +41,12 @@ class RoundRatingFragment : Fragment() {
                 false
             )
 
-        val fightersParameterScores = RoundRatingFragmentArgs.fromBundle(arguments!!).fightersScores
-        val round = RoundRatingFragmentArgs.fromBundle(arguments!!).round
+        val fightersParameterScores = RoundRatingFragmentArgs.fromBundle(
+            arguments!!
+        ).fightersScores
+        val round = RoundRatingFragmentArgs.fromBundle(
+            arguments!!
+        ).round
         val activityViewModel = ViewModelProviders.of(requireActivity())
             .get(ActivityViewModel::class.java)
         setRound(binding.tableName, round)
@@ -127,8 +127,14 @@ class RoundRatingFragment : Fragment() {
                 redEffort.add((redCheckbox[index] as CheckBox).isChecked)
             }
 
-        return FighterEffort(name = "RED", effortList = redEffort) to
-                FighterEffort(name = "BLUE", effortList = blueEffort)
+        return FighterEffort(
+            name = "RED",
+            effortList = redEffort
+        ) to
+                FighterEffort(
+                    name = "BLUE",
+                    effortList = blueEffort
+                )
     }
 
     private fun getOnRoundEndClickListener(
@@ -192,7 +198,7 @@ class RoundRatingFragment : Fragment() {
             isTd = paramName == resources.getString(R.string.takedown_button_text)
             binding.statTableHeader.addView(
                 createHeaderTextView(
-                    abbrScore.first,
+                    abbrScore.first.trim(),
                     binding.statTableHeader.context
                 )
             )
@@ -232,6 +238,7 @@ class RoundRatingFragment : Fragment() {
             )
             ++index
         }
+        binding.statsTable.invalidate()
     }
 
     private fun createScoreTextView(
@@ -246,7 +253,6 @@ class RoundRatingFragment : Fragment() {
             it.textAlignment = View.TEXT_ALIGNMENT_CENTER
             it.text = score
             it.textSize = resources.getDimension(R.dimen.cell_text_size)
-            it.setPadding(resources.getDimension(R.dimen.cell_padding).toInt())
         }
     }
 
@@ -279,7 +285,6 @@ class RoundRatingFragment : Fragment() {
                 it.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 it.text = paramName
                 it.textSize = resources.getDimension(R.dimen.header_text_size)
-                it.setPadding(resources.getDimension(R.dimen.cell_padding).toInt())
             }
     }
 }

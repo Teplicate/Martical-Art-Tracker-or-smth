@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import java.lang.Math.abs
 
 class SwipeableButton : Button {

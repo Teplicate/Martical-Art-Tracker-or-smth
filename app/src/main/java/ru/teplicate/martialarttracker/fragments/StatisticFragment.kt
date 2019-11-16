@@ -65,7 +65,8 @@ class StatisticFragment : Fragment() {
         val idToScoreMap = (blueButtonIdToScoreId + redButtonIdToScoreId)
             .map { it.first to it.second }.toMap().toMutableMap()
 
-        val viewModelFactory = StatisticViewModelFactory(idToScoreMap)
+        val viewModelFactory =
+            StatisticViewModelFactory(idToScoreMap)
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(StatisticViewModel::class.java)
 

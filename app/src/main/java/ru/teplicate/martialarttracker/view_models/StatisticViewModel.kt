@@ -11,7 +11,9 @@ class StatisticViewModelFactory(private val buttonIdsToScoresMap: MutableMap<Int
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(StatisticViewModel::class.java))
-            return StatisticViewModel(buttonIdsToScoresMap) as T
+            return StatisticViewModel(
+                buttonIdsToScoresMap
+            ) as T
         else throw IllegalArgumentException("Unknown class ${modelClass.name}")
     }
 }
