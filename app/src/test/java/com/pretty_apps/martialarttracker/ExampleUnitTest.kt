@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker
+package com.pretty_apps.martialarttracker
 
 import org.junit.Test
 

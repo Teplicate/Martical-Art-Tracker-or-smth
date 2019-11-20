@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="roundData"
-            type="ru.teplicate.martialarttracker.util.RoundData" />
+            type="com.pretty_apps.martialarttracker.util.RoundData" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -46,35 +45,39 @@
                     android:layout_width="match_parent"
                     android:divider="@color/black"
                     android:dividerPadding="2dp"
-                    android:showDividers="beginning|middle|end">
+                    android:showDividers="middle">
 
                     <TextView
                         style="@style/TableHeaderStyle"
                         android:layout_column="0"
                         android:layout_margin="4dp"
                         android:gravity="center"
+                        android:layout_width="@dimen/result_table_header_size"
                         android:text="@string/agressivness" />
 
                     <TextView
                         style="@style/TableHeaderStyle"
                         android:layout_column="1"
+                        android:layout_width="@dimen/result_table_header_size"
                         android:layout_margin="4dp"
                         android:gravity="center"
-                        android:text="Damage \n dealt" />
+                        android:text="Damage dealt" />
 
                     <TextView
                         style="@style/TableHeaderStyle"
                         android:layout_column="2"
                         android:layout_margin="4dp"
+                        android:layout_width="@dimen/result_table_header_size"
                         android:gravity="center"
-                        android:text="Stance \n dominance" />
+                        android:text="Stance dominance" />
 
                     <TextView
                         style="@style/TableHeaderStyle"
                         android:layout_column="3"
                         android:layout_margin="4dp"
+                        android:layout_width="@dimen/result_table_header_size"
                         android:gravity="center"
-                        android:text="Wrestle \n dominance" />
+                        android:text="Wrestle dominance" />
                 </TableRow>
 
                 <TableRow
@@ -82,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="@color/black"
-                    android:showDividers="beginning|middle|end"
+                    android:showDividers="middle"
                     app:fighters_efforts="@{ roundData }" />
 
             </TableLayout>

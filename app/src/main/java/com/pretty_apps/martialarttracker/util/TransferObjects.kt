@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.util
+package com.pretty_apps.martialarttracker.util
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

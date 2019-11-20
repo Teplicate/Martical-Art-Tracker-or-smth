@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.binding
+package com.pretty_apps.martialarttracker.binding
 
 import android.content.Context
 import android.view.Gravity
@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import androidx.databinding.BindingAdapter
-import ru.teplicate.martialarttracker.R
-import ru.teplicate.martialarttracker.util.CompetitorColor
-import ru.teplicate.martialarttracker.util.RoundData
+import com.pretty_apps.martialarttracker.R
+import com.pretty_apps.martialarttracker.util.CompetitorColor
+import com.pretty_apps.martialarttracker.util.RoundData
 
 @BindingAdapter("round_number")
 fun bindRoundNumber(textView: TextView, round: Short?) {
@@ -34,12 +34,12 @@ fun bindEfforts(tableRow: TableRow, roundData: RoundData?) {
                         R.drawable.blue_mark
                     )
                 )
-            else container.addView(
-                getMark(
-                    tableRow.context,
-                    R.drawable.transparent_mark
-                )
-            )
+//            else container.addView(
+//                getMark(
+//                    tableRow.context,
+//                    R.drawable.transparent_mark
+//                )
+//            )
             if (roundData.redEffort.effortList[i])
                 container.addView(
                     getMark(
@@ -47,12 +47,12 @@ fun bindEfforts(tableRow: TableRow, roundData: RoundData?) {
                         R.drawable.red_mark
                     )
                 )
-            else container.addView(
-                getMark(
-                    tableRow.context,
-                    R.drawable.transparent_mark
-                )
-            )
+//            else container.addView(
+//                getMark(
+//                    tableRow.context,
+//                    R.drawable.transparent_mark
+//                )
+//            )
             tableRow.addView(container, TableRow.LayoutParams(i))
         }
     }

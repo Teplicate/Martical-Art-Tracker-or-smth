@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':mybuttons-debug'
 rootProject.name='Martial Tracker'

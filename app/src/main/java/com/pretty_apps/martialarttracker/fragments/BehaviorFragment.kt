@@ -1,11 +1,11 @@
-package ru.teplicate.martialarttracker.fragments
+package com.pretty_apps.martialarttracker.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.teplicate.martialarttracker.R
+import com.pretty_apps.martialarttracker.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

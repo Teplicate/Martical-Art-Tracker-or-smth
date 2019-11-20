@@ -2,19 +2,20 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
-            type="ru.teplicate.martialarttracker.view_models.StatisticViewModel" />
+            type="com.pretty_apps.martialarttracker.view_models.StatisticViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="ru.teplicate.martialarttracker.fragments.StatisticFragment">
+        tools:context="com.pretty_apps.martialarttracker.fragments.StatisticFragment">
 
         <View
             android:id="@+id/screenDivider"
@@ -31,17 +32,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:tag="BLUE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/screenDivider"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06999999">
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueSignigicantStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Sig. Strike" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Strike" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueKnockdowns"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Knock -\ndowns" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueTakedownAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown \n Att." />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueTakedown"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/bluePasses"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Passes" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueReversals"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Reversals" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/blueSubmissionAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -149,7 +149,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/blueTilesContainer"
             app:layout_constraintEnd_toStartOf="@+id/blueTilesContainer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/blueTilesContainer">
+            app:layout_constraintTop_toTopOf="@+id/blueTilesContainer"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/blueSigStrikePoints"
@@ -248,18 +249,17 @@
             android:id="@+id/redTilesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:tag="RED"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toEndOf="@+id/screenDivider"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06999999">
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redSignigicantStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -272,7 +272,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Sig. Strike" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redStrike"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -284,7 +284,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Strike" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redKnockdowns"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -296,7 +296,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Knock -\ndowns" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redTakedownAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -308,7 +308,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown \n Att." />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redTakedown"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -320,7 +320,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Takedown" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redPasses"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -332,7 +332,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Passes" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redReversals"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -344,7 +344,7 @@
                 android:textSize="@dimen/tile_text_size"
                 tools:text="Reversals" />
 
-            <ru.teplicate.martialarttracker.custom_view.SwipeableButton
+            <ru.teplicate.mybuttons.SwipeableButton
                 android:id="@+id/redSubmissionAttempt"
                 style="@style/ButtonTextStyle"
                 android:layout_width="wrap_content"
@@ -367,7 +367,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/redTilesContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/redTilesContainer"
-            app:layout_constraintTop_toTopOf="@+id/redTilesContainer">
+            app:layout_constraintTop_toTopOf="@+id/redTilesContainer"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/redSigStrikePoints"
@@ -461,17 +462,38 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/roundEndButton"
+        <ru.teplicate.mybuttons.MorphButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="12dp"
+            android:text="End round"
+            android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/redTilesContainer"
-            app:layout_constraintStart_toEndOf="@+id/blueTilesContainer" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            custom:morph_button_color="@color/black"
+            custom:bouncing_duration="1500"
+            custom:folding_duration="500"
+            custom:morph_height="20dp"
+            custom:morph_radius="10dp"
+            custom:morph_width="20dp"
+            custom:ordinate_bouncing="30"
+            custom:unfolding_duration="500"
+            />
+
+
+        <!--        <Button-->
+        <!--            android:id="@+id/roundEndButton"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:textSize="@dimen/button_text_size"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/redTilesContainer"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/blueTilesContainer" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>

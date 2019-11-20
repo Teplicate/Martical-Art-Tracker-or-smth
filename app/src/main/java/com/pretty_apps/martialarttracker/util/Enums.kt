@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.util
+package com.pretty_apps.martialarttracker.util
 
 enum class ParamScoreName(val title: String) {
     TAKEDOWN("Takedown"),

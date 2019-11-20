@@ -4,14 +4,15 @@
     <dimen name="underline_padding">20dp</dimen>
     <dimen name="underline_side_padding">5dp</dimen>
     <dimen name="button_margin">8dp</dimen>
-    <dimen name="point_text_size">35dp</dimen>
+    <dimen name="point_text_size">30dp</dimen>
     <dimen name="cell_text_size">7sp</dimen>
     <dimen name="header_text_size">6sp</dimen>
-    <dimen name="points_bottom_margin">26dp</dimen>
+    <dimen name="points_bottom_margin">33dp</dimen>
     <dimen name="tile_text_size">14sp</dimen>
     <dimen name="cell_padding">4dp</dimen>
     <dimen name="text_size">20sp</dimen>
     <dimen name="button_text_size">15sp</dimen>
     <dimen name="mark_size">30dp</dimen>
     <dimen name="mark_radius">15dp</dimen>
+    <dimen name="result_table_header_size">70dp</dimen>
 </resources>

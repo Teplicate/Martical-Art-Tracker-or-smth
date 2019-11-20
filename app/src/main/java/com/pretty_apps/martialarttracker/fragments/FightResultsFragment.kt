@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.fragments
+package com.pretty_apps.martialarttracker.fragments
 
 
 import android.os.Bundle
@@ -8,16 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import ru.teplicate.martialarttracker.R
+import com.pretty_apps.martialarttracker.R
 
-import ru.teplicate.martialarttracker.adapters.RoundItemAdapter
-import ru.teplicate.martialarttracker.databinding.FragmentFightResultsBinding
-import ru.teplicate.martialarttracker.util.CompetitorColor
-import ru.teplicate.martialarttracker.util.RoundData
-import ru.teplicate.martialarttracker.view_models.ActivityViewModel
+import com.pretty_apps.martialarttracker.adapters.RoundItemAdapter
+import com.pretty_apps.martialarttracker.databinding.FragmentFightResultsBinding
+import com.pretty_apps.martialarttracker.util.CompetitorColor
+import com.pretty_apps.martialarttracker.util.RoundData
+import com.pretty_apps.martialarttracker.view_models.ActivityViewModel
+import com.pretty_apps.martialarttracker.view_models.FightResultViewModel
 import kotlin.system.exitProcess
 
 /**
@@ -32,16 +35,24 @@ class FightResultsFragment : Fragment() {
         val binding = FragmentFightResultsBinding.inflate(inflater, container, false)
         val activityViewModel =
             ViewModelProviders.of(requireActivity()).get(ActivityViewModel::class.java)
+        val fightsResultViewModel =
+            ViewModelProviders.of(this).get(FightResultViewModel::class.java)
         val roundsAdapter = RoundItemAdapter()
         val roundsList = FightResultsFragmentArgs.fromBundle(
             arguments!!
         ).roundsData
+        fightsResultViewModel.setFightResults(roundsList)
         binding.recyclerRoundsSummary.adapter = roundsAdapter
-        roundsAdapter.submitList(roundsList.toList())
+        roundsAdapter.submitList(fightsResultViewModel.fightResults)
         setOverallScores(roundsList, binding)
         setWinner(binding.winnerName, roundsList)
-        binding.newFight.setOnClickListener(getOnNewFightClickListener(activityViewModel))
-        binding.exit.setOnClickListener(getOnExitClickListner())
+        binding.newFight.setOnClickListener(
+            getOnNewFightClickListener(
+                activityViewModel,
+                fightsResultViewModel
+            )
+        )
+//        binding.exit.setOnClickListener(getOnExitClickListner())
 
         return binding.root
     }
@@ -86,9 +97,13 @@ class FightResultsFragment : Fragment() {
         }
     }
 
-    private fun getOnNewFightClickListener(activityViewModel: ActivityViewModel): View.OnClickListener {
+    private fun getOnNewFightClickListener(
+        activityViewModel: ActivityViewModel,
+        fightResultViewModel: FightResultViewModel
+    ): View.OnClickListener {
         return View.OnClickListener {
             activityViewModel.clearRoundsHistory()
+            fightResultViewModel.clearData()
             findNavController().navigate(FightResultsFragmentDirections.actionFightResultsFragmentToStatisticFragment())
         }
     }

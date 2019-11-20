@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="ru.teplicate.martialarttracker.fragments.StatisticFragment"
+        android:name="com.pretty_apps.martialarttracker.fragments.StatisticFragment"
         android:label="StatisticFragment" >
         <action
             android:id="@+id/action_statisticFragment_to_roundRatingFragment"
@@ -15,49 +15,56 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/statisticFragment" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/roundRatingFragment"
-        android:name="ru.teplicate.martialarttracker.fragments.RoundRatingFragment"
+        android:name="com.pretty_apps.martialarttracker.fragments.RoundRatingFragment"
         android:label="fragment_round_rating"
         tools:layout="@layout/fragment_round_rating" >
         <argument
             android:name="fightersScores"
-            app:argType="ru.teplicate.martialarttracker.util.TransferContainer" />
+            app:argType="com.pretty_apps.martialarttracker.util.TransferContainer" />
         <action
             android:id="@+id/action_roundRatingFragment_to_statisticFragment"
             app:destination="@id/statisticFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/statisticFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_roundRatingFragment_to_fightResultsFragment"
             app:destination="@id/fightResultsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/statisticFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="round"
             app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fightResultsFragment"
-        android:name="ru.teplicate.martialarttracker.fragments.FightResultsFragment"
+        android:name="com.pretty_apps.martialarttracker.fragments.FightResultsFragment"
         android:label="fragment_fight_results"
         tools:layout="@layout/fragment_fight_results" >
         <argument
             android:name="roundsData"
-            app:argType="ru.teplicate.martialarttracker.util.RoundData[]" />
+            app:argType="com.pretty_apps.martialarttracker.util.RoundData[]" />
         <action
             android:id="@+id/action_fightResultsFragment_to_statisticFragment"
             app:destination="@id/statisticFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/fightResultsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

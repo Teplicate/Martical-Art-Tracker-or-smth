@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.fragments
+package com.pretty_apps.martialarttracker.fragments
 
 
 import android.content.Context
@@ -14,14 +14,14 @@ import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import ru.teplicate.martialarttracker.R
+import com.pretty_apps.martialarttracker.R
 
-import ru.teplicate.martialarttracker.databinding.FragmentRoundRatingBinding
-import ru.teplicate.martialarttracker.util.CompetitorColor
-import ru.teplicate.martialarttracker.util.FighterEffort
-import ru.teplicate.martialarttracker.util.RoundData
-import ru.teplicate.martialarttracker.util.TransferContainer
-import ru.teplicate.martialarttracker.view_models.ActivityViewModel
+import com.pretty_apps.martialarttracker.databinding.FragmentRoundRatingBinding
+import com.pretty_apps.martialarttracker.util.CompetitorColor
+import com.pretty_apps.martialarttracker.util.FighterEffort
+import com.pretty_apps.martialarttracker.util.RoundData
+import com.pretty_apps.martialarttracker.util.TransferContainer
+import com.pretty_apps.martialarttracker.view_models.ActivityViewModel
 
 /**
  * A simple [Fragment] subclass.

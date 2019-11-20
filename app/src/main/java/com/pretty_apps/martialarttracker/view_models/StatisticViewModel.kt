@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.view_models
+package com.pretty_apps.martialarttracker.view_models
 
 import android.util.Log
 import androidx.lifecycle.LiveData

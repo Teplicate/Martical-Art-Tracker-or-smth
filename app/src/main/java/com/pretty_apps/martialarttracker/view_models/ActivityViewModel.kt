@@ -1,7 +1,7 @@
-package ru.teplicate.martialarttracker.view_models
+package com.pretty_apps.martialarttracker.view_models
 
 import androidx.lifecycle.ViewModel
-import ru.teplicate.martialarttracker.util.RoundData
+import com.pretty_apps.martialarttracker.util.RoundData
 
 class ActivityViewModel : ViewModel() {
     private val _rounds = ArrayList<RoundData>()

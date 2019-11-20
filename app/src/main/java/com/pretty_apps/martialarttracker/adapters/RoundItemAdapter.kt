@@ -1,12 +1,12 @@
-package ru.teplicate.martialarttracker.adapters
+package com.pretty_apps.martialarttracker.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.teplicate.martialarttracker.databinding.RoundItemBinding
-import ru.teplicate.martialarttracker.util.RoundData
+import com.pretty_apps.martialarttracker.databinding.RoundItemBinding
+import com.pretty_apps.martialarttracker.util.RoundData
 
 class RoundItemAdapter : ListAdapter<RoundData, RoundDataViewHolder>(
     RoundDataDiffCallback

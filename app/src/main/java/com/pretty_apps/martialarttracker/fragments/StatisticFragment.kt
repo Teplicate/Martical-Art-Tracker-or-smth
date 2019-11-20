@@ -1,4 +1,4 @@
-package ru.teplicate.martialarttracker.fragments
+package com.pretty_apps.martialarttracker.fragments
 
 
 import android.os.Bundle
@@ -15,15 +15,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import ru.teplicate.martialarttracker.R
-import ru.teplicate.martialarttracker.custom_view.OnSwipeListener
-import ru.teplicate.martialarttracker.custom_view.SwipeableButton
-import ru.teplicate.martialarttracker.databinding.FragmentStatisticBinding
-import ru.teplicate.martialarttracker.util.CompetitorColor
-import ru.teplicate.martialarttracker.util.TransferContainer
-import ru.teplicate.martialarttracker.view_models.ActivityViewModel
-import ru.teplicate.martialarttracker.view_models.StatisticViewModel
-import ru.teplicate.martialarttracker.view_models.StatisticViewModelFactory
+import com.pretty_apps.martialarttracker.R
+import ru.teplicate.mybuttons.OnSwipeListener
+import ru.teplicate.mybuttons.SwipeableButton
+import com.pretty_apps.martialarttracker.databinding.FragmentStatisticBinding
+import com.pretty_apps.martialarttracker.util.CompetitorColor
+import com.pretty_apps.martialarttracker.util.TransferContainer
+import com.pretty_apps.martialarttracker.view_models.ActivityViewModel
+import com.pretty_apps.martialarttracker.view_models.StatisticViewModel
+import com.pretty_apps.martialarttracker.view_models.StatisticViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -83,14 +83,20 @@ class StatisticFragment : Fragment() {
             this,
             getScoreViewObserver(viewModel, scoreViewIdToSelf)
         )
-
-        binding.roundEndButton.setOnClickListener(
+        binding.fab.setOnClickListener(
             onRoundEndButtonClickListener(
                 viewModel,
                 activityViewModel.rounds.size + 1
             )
         )
-        setRoundButtonText(activityViewModel, binding.roundEndButton)
+
+//        binding.roundEndButton.setOnClickListener(
+//            onRoundEndButtonClickListener(
+//                viewModel,
+//                activityViewModel.rounds.size + 1
+//            )
+//        )
+//        setRoundButtonText(activityViewModel, binding.roundEndButton)
         // Inflate the layout for this fragment
         return binding.root
     }
